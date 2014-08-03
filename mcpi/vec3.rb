@@ -54,7 +54,7 @@ class Vec3
         return self.+(-rhs)
     end
 
-    def ==(rhs)
+    def <=>(rhs)
         dx = @x - rhs.x
         if dx != 0 then return dx end
         dy = @y - rhs.y
