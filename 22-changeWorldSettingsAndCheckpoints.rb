@@ -9,7 +9,7 @@ def sendToChatAndConsole(minecraft, message)
     puts(message)
     # send message to the minecraft chat
     minecraft.postToChat(message)
-    return null
+    return nil
 end
 
 #    First thing you do is create a connection to minecraft
@@ -26,7 +26,7 @@ mc.saveCheckpoint()
 
 #wait for 2 seconds 
 sleep(2)
-
+sendToChatAndConsole(mc, "Building Wall")
 # Get the player position
 playerPosition = mc.player.getTilePos()
 
@@ -72,5 +72,12 @@ mc.setting('nametags_visible', 0)
 sleep(4)
 sendToChatAndConsole(mc, "Set Camera to normal player first person")
 mc.camera.setNormal(1)
-
+#wait for 2 seconds 
+sleep(2)
+sendToChatAndConsole(mc, "Turning off AutoJump")
+mc.player.setting('autojump', 0)
+#wait for 8 seconds 
+sleep(8)
+sendToChatAndConsole(mc, "Turning on AutoJump")
+mc.player.setting('autojump', 1)
 
