@@ -5,6 +5,15 @@ require_relative 'block'
 require_relative 'util'
 
 
+def getNumFromStatusBool(state)
+    if (state == 1 || state.to_s.downcase == 'true' || state == true)
+        return 1;    
+    else
+        return 0;
+    end
+
+end
+
 class CmdPositioner
     #Methods for setting and getting positions
     def initialize(connection, packagePrefix)
@@ -21,6 +30,7 @@ class CmdPositioner
     def setPos(id, *args)
         #Set entity position (entityIdint, x,y,z)
         @conn.send(@pkg + ".setPos", id, args)
+        return nil
     end
 
     def getTilePos(id)
@@ -34,13 +44,14 @@ class CmdPositioner
     def setTilePos(id, *args)
         #Set entity tile position (entityIdint) => Vec3
         @conn.send(@pkg + ".setTile", id, args.map{|section| section.map{|num| num.to_i}})
+        return nil
     end
 
     def setting( setting, status)
         #Set a player setting (setting, status). keys autojump
-        state = 0
-        state = 1 if status
-        @conn.send(@pkg + ".setting", setting,  state)
+        status = getNumFromStatusBool(status)
+        @conn.send(@pkg + ".setting", setting,  status)
+        return nil
     end
 end
 
@@ -83,21 +94,25 @@ class CmdCamera
     def setNormal( *args)
         #Set camera mode to normal Minecraft view ([entityId])
         @conn.send("camera.mode.setNormal", args)
+        return nil
     end
 
     def setFixed()
         #Set camera mode to fixed view
         @conn.send("camera.mode.setFixed")
+        return nil
     end
 
     def setFollow( *args)
         #Set camera mode to follow an entity ([entityId])
         @conn.send("camera.mode.setFollow", args)
+        return nil
     end
 
     def setPos( *args)
         #Set camera entity position (x,y,z)
         @conn.send("camera.setPos", args)
+        return nil
     end
 end
 
@@ -110,6 +125,7 @@ class CmdEvents
     def clearAll()
         #Clear all old events
         @conn.send("events.clear")
+        return nil
     end
 
     def pollBlockHits()
@@ -125,7 +141,6 @@ class Minecraft
     attr_reader :player, :events, :camera, :entity
     #The main class to interact with a running instance of Minecraft Pi.
     def initialize(connection)
-       # puts connection
         @conn = connection
 
         @camera = CmdCamera.new(connection)
@@ -154,11 +169,13 @@ class Minecraft
     def setBlock( *args)
         #Set block (x,y,z,id,[data])
         @conn.send("world.setBlock", args)
+        return nil
     end
 
     def setBlocks( *args)
         #Set a cuboid of blocks (x0,y0,z0,x1,y1,z1,id,[data])
         @conn.send("world.setBlocks", args)
+        return nil
     end
 
     def getHeight( *args)
@@ -176,22 +193,26 @@ class Minecraft
     def saveCheckpoint()
         #Save a checkpoint that can be used for restoring the world
         @conn.send("world.checkpoint.save")
+        return nil
     end
 
     def restoreCheckpoint()
         #Restore the world state to the checkpoint
         @conn.send("world.checkpoint.restore")
+        return nil
     end
 
     def postToChat( msg)
         #Post a message to the game chat
         @conn.send("chat.post", msg)
+        return nil
     end
 
     def setting(setting, status)
         #Set a world setting (setting, status). keys world_immutable, nametags_visible
-        status = 0 if (status != 1 && status != TRUE)
+        status = getNumFromStatusBool(status)
         @conn.send("world.setting", setting, status)
+        return nil
     end
 
     #static class method
