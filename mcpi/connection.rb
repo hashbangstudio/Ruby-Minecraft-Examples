@@ -24,6 +24,7 @@ class Connection
             e += "Last Message: #{@lastSent}"
             STDERR.puts e
        end
+       return nil
     end
 
     def send(func, *data)
@@ -36,6 +37,7 @@ class Connection
         drain()
         @lastSent = s
         @socket.write("#{s}\n")
+        return nil
     end
 
     def receive()
@@ -57,5 +59,6 @@ class Connection
 
     def close
         @socket.close
+        return nil
     end
  end
