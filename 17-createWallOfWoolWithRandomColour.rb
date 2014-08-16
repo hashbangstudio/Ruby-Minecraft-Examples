@@ -3,6 +3,14 @@ require_relative 'mcpi/minecraft'
 # import needed block defintiions
 require_relative 'mcpi/block'
 
+# create a function to create a random block of wool
+def getWoolBlockWithRandomColour()
+    #Generate a random number within the allowed range of colours (0 to 15 inclusive)
+    randomNumber = rand(16)
+    puts("random number to be used = #{randomNumber}")
+    block = WOOL.withData(randomNumber)
+    return block
+end
 
 # Create a connection to the Minecraft game
 mc = Minecraft.create()
@@ -24,12 +32,9 @@ for row in 0...6
     for column in 0...10
         #increase the distance along the row that the block is placed at
         blockXposn += 1
-        #Generate a random number within the allowed range of colours (0 to 15 inclusive)
-        randomNumber = rand(16)
-        puts("random number to be used = #{randomNumber}")
         puts("Creating block at (#{blockXposn}, #{blockYposn}, #{blockZposn})")
         # Create a block
-        mc.setBlock(blockXposn, blockYposn, blockZposn, WOOL.withData(randomNumber))
+        mc.setBlock(blockXposn, blockYposn, blockZposn, getWoolBlockWithRandomColour())
         sleep(0.5)
     end
 end
