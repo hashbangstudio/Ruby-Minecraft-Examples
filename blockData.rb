@@ -76,14 +76,14 @@ NETHER_REACTOR_CORE.id => "NETHER_REACTOR_CORE"
 
 
 #available 0-1, affects whether striking block sets off fuse
-TntTypeNameTodId = {
+TntTypeNameToId = {
 "safe"  => 0,
 "armed" => 1
 }
 
 
 #available range 0-15, affects colour of wool block
-ColourNameToId= {
+ColourNameToId = {
 "white"      => 0,
 "orange"     => 1,
 "magenta"    => 2,
@@ -107,7 +107,7 @@ ColourNameToId= {
 # only 0-2 seem to do anything for texture
 # 0 to 3 is type, beyond that is decay counter
 # avilablerange 0-15
-LeavesTypeNameToId ={
+LeavesTypeNameToId = {
 "oak"   => 0,
 "pine"  => 1,
 "spruce"=> 1,
