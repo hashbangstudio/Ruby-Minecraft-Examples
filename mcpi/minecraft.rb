@@ -190,9 +190,8 @@ class Minecraft
 
     def setting(setting, status)
         #Set a world setting (setting, status). keys world_immutable, nametags_visible
-        state = 0
-        state = 1 if status
-        @conn.send("world.setting", setting, state)
+        status = 0 if (status != 1 && status != TRUE)
+        @conn.send("world.setting", setting, status)
     end
 
     #static class method
