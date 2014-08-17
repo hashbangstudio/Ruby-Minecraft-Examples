@@ -13,8 +13,7 @@ mc = Minecraft.create()
 
 # Get the block that the player is currently in
 playerPosition = mc.player.getTilePos()
-# Get the exact position of the player
-playerPosFLoat = mc.player.getPos()
+
 # create the output message as a string
 message = "You are at( #{playerPosition.x}, #{playerPosition.y}, #{playerPosition.z})"
 
