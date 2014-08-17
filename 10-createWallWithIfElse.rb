@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 #import the needed modules fo communication with minecraft world
 require_relative 'mcpi/minecraft'
 # import needed block defintiions

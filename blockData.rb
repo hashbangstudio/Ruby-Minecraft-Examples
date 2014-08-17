@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # import block  definitions
 require_relative 'mcpi/block'
 

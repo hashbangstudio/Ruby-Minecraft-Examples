@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'mcpi/minecraft'
 require_relative 'mcpi/block'
 

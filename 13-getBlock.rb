@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # We have to import the minecraft api module to do anything in the minecraft world
 require_relative 'mcpi/minecraft'
 require_relative 'mcpi/block'

@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 #import the needed modules
 require_relative 'mcpi/minecraft'
 require_relative 'mcpi/block'
