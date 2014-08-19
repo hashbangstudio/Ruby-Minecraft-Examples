@@ -20,32 +20,45 @@ It sets up a communication line between your script and the minecraft world
 mc = Minecraft.create()
 
 
-minNumOfParams = 2
+minNumOfParams = 1
 numOfParamsGiven = ARGV.length
 
 if numOfParamsGiven >= minNumOfParams
     cameraMode = ARGV[0]
 
-    if cameraMode.eql?("follow")
-        mc.camera.setFollow(ARGV[1])
-    elsif cameraMode.eql?("normal")
-        mc.camera.setNormal(ARGV[1])
-    elsif cameraMode.eql?("fixed")
-        if numOfParamsGiven == 4
-        #should verify arguments are integer coordinates
-            mc.camera.setFixed()
-            mc.camera.setPos(ARGV[1], \
-                             ARGV[2], \
-                             ARGV[3])
+    case cameraMode
+        when "follow" 
+            if numOfParamsGiven == 1
+               mc.camera.setFollow()
+            elsif numOfParamsGiven == 2
+               mc.camera.setFollow(ARGV[1])
+            else
+               puts("Expected 1 or 2 parameters but got #{numOfParamsGiven}")
+            end
+        when "normal"
+            if numOfParamsGiven == 1
+               mc.camera.setNormal()
+            elsif numOfParamsGiven == 2
+               mc.camera.setNormal(ARGV[1])
+            else
+               puts("Expected 1 or 2 parameters but got #{numOfParamsGiven}")
+            end
+        when "fixed"
+            if numOfParamsGiven == 4
+            #should verify arguments are integer coordinates
+                mc.camera.setFixed()
+                mc.camera.setPos(ARGV[1], 
+                                 ARGV[2], 
+                                 ARGV[3])
+            else
+                puts("insufficient parameters given")
+                puts("Require 4 but got #{numOfParamsGiven}")
+            end
         else
-            puts("insufficient parameters given")
-            puts("Require 4 but got #{numOfParamsGiven}")
-        end
-    else
-        puts("unknown camera mode parameter given #{ ARGV[0]}")
-        printAvailableCameraModes()
+            puts("unknown camera mode parameter given #{ ARGV[0]}")
+            printAvailableCameraModes()
     end
 else
     puts("insufficient parameters given")
-    puts("Require #{minNumOfParams}, got #{numOfParamsGiven}")
+    puts("Require minimum of #{minNumOfParams}, got #{numOfParamsGiven}")
 end
