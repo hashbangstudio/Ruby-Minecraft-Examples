@@ -27,8 +27,8 @@ puts(message)
 mc.postToChat(message)
 
 # Randomly generates the amount to shift position by
-xShift = rand(11)-10
-zShift = rand(11)-10
+xShift = rand(21)-10
+zShift = rand(21)-10
 # Set variables for the new position
 newXposn = playerPosition.x + xShift
 newZposn = playerPosition.z + zShift
