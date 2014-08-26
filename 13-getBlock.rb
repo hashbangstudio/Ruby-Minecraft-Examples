@@ -20,7 +20,13 @@ playerPosition = mc.player.getTilePos()
 
 height = mc.getHeight(playerPosition.x, playerPosition.z)
 # create the output message as a string
-message = " height is #{height}"
+message = "Height is #{height}"
+
+# puts to the ruby interpreter standard output (terminal probably)
+puts(message)
+
+# send message to the minecraft chat
+mc.postToChat(message)
 
 # Get the type of block for the highest point in world
 # This is done at the horizonal player posn
@@ -34,7 +40,7 @@ if (blockIdNum == AIR.id)
 end
 
 # Add to message, the type of block stood on
-message += " Block type #{blockIdNum} which is #{blockName}"
+message = "Block is of type #{blockIdNum} which is #{blockName}"
 
 # puts to the ruby interpreter standard output (terminal probably)
 puts(message)

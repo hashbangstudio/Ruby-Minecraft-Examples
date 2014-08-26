@@ -20,6 +20,10 @@ playerPosition = mc.player.getTilePos()
 height = mc.getHeight(playerPosition.x, playerPosition.z)
 # create the output message as a string
 message = "Height is #{height}"
+# puts to the ruby interpreter standard output (terminal probably)
+puts(message)
+# post message to the chat
+mc.postToChat(message)
 
 # Get the type of block for the highest point in world at horiz player posn
 blockAndData = mc.getBlockWithData(playerPosition.x, height , playerPosition.z)
@@ -32,7 +36,7 @@ end
 blockName = BlockIdToName[blockAndData.id]
 
 # Add to message, the type of block stood on
-message += "  Block id #{blockAndData.id} which is #{ blockName}"
+message = "Block is of type #{blockAndData.id} which is #{ blockName}"
 # puts to the ruby interpreter standard output (terminal probably)
 puts(message)
 # post message to the chat

@@ -25,9 +25,10 @@ for row in 0...6
     for column in 0...10
         #increase the distance along the row that the block is placed at
         blockXposn += 1
-        puts("Creating block at (#{blockXposn}, #{blockYposn}, #{blockZposn})")
+        puts("Creating block with id = #{id} at (#{blockXposn}, #{blockYposn}, #{blockZposn})")
         # Create a block
-        mc.setBlock(blockXposn, blockYposn, blockZposn, Block.new(id))
+        #mc.setBlock(blockXposn, blockYposn, blockZposn, Block.new(id))#Alternative method
+        mc.setBlock(blockXposn, blockYposn, blockZposn, id)
         sleep(0.5)
         id += 1
     end

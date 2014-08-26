@@ -13,9 +13,8 @@ playerPosition = mc.player.getTilePos()
 # Set coordinates (position) for the block that is slightly away from the player
 # Note y is the vertical coordinate, x and z the horizontal
 blockXposn = playerPosition.x + 1
-blockYposn = playerPosition.y + 1
 blockZposn = playerPosition.z + 1
-
+blockYposn = mc.getHeight(blockXposn, blockZposn)
 
 blockToPlace = AIR
 numOfArgs = ARGV.length

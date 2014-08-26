@@ -37,7 +37,7 @@ if (numOfArguments == 1)
         # go through the text file line by line
         textFile.each{ |line|
             # send message to the minecraft chat
-            # puts(line)
+            puts(line)
             mc.postToChat(line)
         }
     rescue

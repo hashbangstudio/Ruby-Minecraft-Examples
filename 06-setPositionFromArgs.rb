@@ -26,7 +26,7 @@ end
 playerPosition = mc.player.getTilePos()
 
 # create the output message as a string
-message = " you are at (#{playerPosition.x},#{playerPosition.y},#{playerPosition.z})"
+message = "You are at (#{playerPosition.x},#{playerPosition.y},#{playerPosition.z})"
 
 # puts to the ruby interpreter standard output (terminal probably)
 puts(message)
@@ -43,7 +43,7 @@ mc.player.setTilePos(newXposn, newYposn, newZposn)
 # Get the current tile/block that the player is located at in the world
 playerPosition = mc.player.getTilePos()
 
-message = " you are now at (#{playerPosition.x},#{playerPosition.y},#{playerPosition.z})"
+message = "You are now at (#{playerPosition.x},#{playerPosition.y},#{playerPosition.z})"
 
 puts(message)
 mc.postToChat(message)

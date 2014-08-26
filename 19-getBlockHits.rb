@@ -24,5 +24,6 @@ while(true)
     if hits.length > 0
         puts hits
     end
+    sleep(1)
 end
 

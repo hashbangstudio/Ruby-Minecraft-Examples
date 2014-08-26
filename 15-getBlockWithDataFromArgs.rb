@@ -21,22 +21,24 @@ if numOfArgs == 3
     x = ARGV[0].to_i
     y = ARGV[1].to_i
     z = ARGV[2].to_i
+elsif numOfArgs == 2
+    x = ARGV[0].to_i
+    z = ARGV[1].to_i
+    #Get the block that would be stood on at this Horiz posn
+    y = mc.getHeight(x,z) - 1
 else
-    puts("Number of arguments incorrect, Expected 3 but got #{numOfArgs}")
-    puts("Usage: ruby script.rb xcoord ycoord zcoord")
+    puts("Number of arguments incorrect, Expected 2 or 3 but got #{numOfArgs}")
+    puts("Usage with 3 args: ruby script.rb xcoord ycoord zcoord")
+    puts("Usage with 2 args: ruby script.rb xcoord zcoord")
     exit()
 end
 
-# Get the type of block for the highest point in world at horiz player posn
+# Get the type of block
 blockAndData = mc.getBlockWithData(x, y ,z)
 
-if blockAndData.id == AIR.id
-    # Need to do height minus one for this
-    blockAndData = mc.getBlockWithData(x, y -1 , z)
-end
 blockName = BlockIdToName[blockAndData.id]
 
-# Add to message, the type of block stood on
+# Create message for the type of block stood on
 message = "Block id #{blockAndData.id} which is #{ blockName}"
 # puts to the ruby interpreter standard output (terminal probably)
 puts(message)

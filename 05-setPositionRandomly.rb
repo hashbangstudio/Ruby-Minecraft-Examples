@@ -18,7 +18,7 @@ mc = Minecraft.create()
 playerPosition = mc.player.getTilePos()
 
 # create the output message as a string
-message = "Your starting position is (#{playerPosition.x},#{playerPosition.y},#{playerPosition.z})"
+message = "Your are at (#{playerPosition.x}, #{playerPosition.y}, #{playerPosition.z})"
 
 # puts to the ruby interpreter standard output (terminal probably)
 puts(message)
@@ -36,8 +36,10 @@ newZposn = playerPosition.z + zShift
 newYposn = mc.getHeight(newXposn, newZposn)
 # Set the position of the player
 mc.player.setTilePos(newXposn, newYposn, newZposn)
+# Get the current tile/block that the player is located at in the world
+playerPosition = mc.player.getTilePos()
 
-message = "You have been moved to (#{newXposn},#{newYposn},#{newZposn})"
+message = "You have been moved to (#{playerPosition.x}, #{playerPosition.y}, #{playerPosition.z})"
 
 puts(message)
 mc.postToChat(message)

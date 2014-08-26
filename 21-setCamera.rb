@@ -9,6 +9,12 @@ def printAvailableCameraModes()
     puts("normal, follow, fixed")
 end
 
+def printUsage()
+    puts("Usage : ruby script.rb normal [entityId]")
+    puts("Usage : ruby script.rb follow [entityId]")
+    puts("Usage : ruby script.rb fixed Xcoord Ycoord Zcoord")
+end
+
 =begin
 First thing you do is create a connection to minecraft
 This is like dialling a phone.
@@ -34,6 +40,8 @@ if numOfParamsGiven >= minNumOfParams
                mc.camera.setFollow(ARGV[1])
             else
                puts("Expected 1 or 2 parameters but got #{numOfParamsGiven}")
+               printUsage()
+               exit()
             end
         when "normal"
             if numOfParamsGiven == 1
@@ -42,6 +50,8 @@ if numOfParamsGiven >= minNumOfParams
                mc.camera.setNormal(ARGV[1])
             else
                puts("Expected 1 or 2 parameters but got #{numOfParamsGiven}")
+               printUsage()
+               exit()
             end
         when "fixed"
             if numOfParamsGiven == 4
@@ -53,12 +63,18 @@ if numOfParamsGiven >= minNumOfParams
             else
                 puts("insufficient parameters given")
                 puts("Require 4 but got #{numOfParamsGiven}")
+                printUsage()
+                exit()
             end
         else
             puts("unknown camera mode parameter given #{ ARGV[0]}")
             printAvailableCameraModes()
+            printUsage()
+            exit()
     end
 else
     puts("insufficient parameters given")
     puts("Require minimum of #{minNumOfParams}, got #{numOfParamsGiven}")
+    printUsage()
+    exit()
 end

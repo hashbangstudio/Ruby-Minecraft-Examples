@@ -45,7 +45,7 @@ if numOfArgs == 2 or numOfArgs == 0
     height = mc.getHeight(x,z)
 
     # create the output message as a string
-    message = " height of world is #{height} at (#{x},#{z})"
+    message = "Height of world is #{height} at (#{x}, #{z})"
 
     # puts to the ruby interpreter standard output (terminal probably)
     puts(message)
