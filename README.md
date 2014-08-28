@@ -28,5 +28,5 @@ All examples can be run from the command line in LXTerminal.
  `cd Ruby-Minecraft-Examples`
 3. Type: `ruby filename.rb` and press enter (where filename is the examples to try)
 4. Where the script expects arguments you supply those after the filename. For example:
-   `python 02-sendArgsMessageToChat.rb "This is a message"`
+   `ruby 02-sendArgsMessageToChat.rb "This is a message"`
 5. Have fun in Minecraft!
