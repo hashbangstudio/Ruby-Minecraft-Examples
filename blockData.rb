@@ -201,7 +201,7 @@ BedTypeNameToId = {
 # available 0 to 3
 # no effect seemingly
 GrassTypeNameToId = {
-"shub"        => 0,
+"shrub"        => 0,
 "grass"       => 1,
 "fern"        => 2,
 "biome-shrub" => 3,
